@@ -14,3 +14,4 @@ RUN dnf install -y make \
   tar \
   python \
   git \
+  valgrind \

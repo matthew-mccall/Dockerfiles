@@ -1,4 +1,4 @@
-FROM clion/fedora/cpp-env:1.0
+FROM clion/fedora/cpp-env
 
 RUN dnf install -y \
     git \

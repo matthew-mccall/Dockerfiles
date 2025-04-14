@@ -20,4 +20,5 @@ EOF
 fi
 
 set -x
-docker build -t $1 $1
+
+podman build -t $1 $1
