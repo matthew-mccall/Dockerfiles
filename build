@@ -21,4 +21,11 @@ fi
 
 set -x
 
-podman build -t $1 $1
+# Check if podman is available
+if command -v podman >/dev/null 2>&1; then
+    CONTAINER_TOOL="podman"
+else
+    CONTAINER_TOOL="docker"
+fi
+
+$CONTAINER_TOOL build -t $1 $1
