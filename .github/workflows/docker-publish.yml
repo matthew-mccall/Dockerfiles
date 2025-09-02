@@ -26,7 +26,7 @@ jobs:
   build:
     strategy:
       matrix:
-        path: [texlive, clion/fedora/arm-none-eabi-gcc]
+        path: [texlive, clion/fedora/cpp-env]
 
     runs-on: ubuntu-latest
     permissions:
