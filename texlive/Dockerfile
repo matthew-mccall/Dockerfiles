@@ -8,6 +8,7 @@ RUN dnf install -y \
     texlive-dot2texi \
     graphviz \
     dot2tex \
-    inkscape
+    inkscape \
+    plantuml
 
 RUN luaotfload-tool --update
