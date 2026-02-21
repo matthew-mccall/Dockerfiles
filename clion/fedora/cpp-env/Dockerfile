@@ -1,6 +1,7 @@
-FROM fedora
+FROM quay.io/fedora/fedora-minimal
 
-RUN dnf install -y make \
+RUN dnf install -y \
+  make \
   autoconf \
   automake \
   dos2unix \
@@ -9,9 +10,11 @@ RUN dnf install -y make \
   gcc-c++ \
   gdb \
   clang \
+  clang-tools-extra \
   cmake \
   rsync \
   tar \
   python \
   git \
   valgrind \
+  llvm \

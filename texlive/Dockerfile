@@ -1,13 +1,9 @@
-FROM fedora
+FROM quay.io/fedora/fedora-minimal
 
 RUN dnf install -y \
     texlive-scheme-full \
-    kicad
-
-RUN dnf install -y \
-    texlive-dot2texi \
+    kicad \
     graphviz \
-    dot2tex \
     inkscape \
     plantuml
 
