@@ -17,4 +17,4 @@ RUN dnf install -y \
   python \
   git \
   valgrind \
-  llvm \
+  llvm

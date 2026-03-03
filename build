@@ -1,16 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$#" -ne 1 ] || [ "$1" == "--help" ]; then
     cat << EOF
 Usage: $0 <path to Dockerfile>
 
-Builds an image using the Dockerfile at the specified path and tags the image 
-with the path. Do not include "Dockerfile" in the path.
+Builds an image using the Dockerfile at the specified path and tags the image
+with the path. Do not include "Dockerfile" in the path. The scirpt will also
+remove the leading `img/` from the tag.
 
 Examples:
 
-1) $0 clion/fedora/cpp-env # Builds a Fedora image for use with CLion
-2) $0 clion/emscripten
+1) $0 img/clion/fedora/cpp-env # Builds a Fedora image for use with CLion
+2) $0 img/clion/emscripten # Builds an image with the tag clion/emscripten
 EOF
     if [ "$1" == "--help" ]; then
         exit 0
@@ -19,7 +20,9 @@ EOF
     exit 1
 fi
 
-set -x
+SCRIPT_DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
+CONTAINER_DIR=$(realpath $1)
+IMAGE_TAG="${CONTAINER_DIR#$SCRIPT_DIR/img/}"
 
 # Check if podman is available
 if command -v podman >/dev/null 2>&1; then
@@ -28,4 +31,5 @@ else
     CONTAINER_TOOL="docker"
 fi
 
-$CONTAINER_TOOL build -t $1 $1
+set -x
+$CONTAINER_TOOL build -t $IMAGE_TAG $1
