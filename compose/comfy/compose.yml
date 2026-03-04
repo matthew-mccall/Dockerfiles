@@ -1,0 +1,15 @@
+services:
+   comfy:
+      build: .
+      ports:
+        - "8188:8188"
+      volumes:
+         - type: bind
+           source: ./models/
+           target: /ComfyUI/models/
+         - type: bind
+           source: ./input/
+           target: /ComfyUI/input/
+         - type: bind
+           source: ./output/
+           target: /ComfyUI/output/
